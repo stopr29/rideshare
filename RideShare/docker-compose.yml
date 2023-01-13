@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  rideshareapp:    
+    container_name: rideshareapp
+    image: rideshare
+    depends_on: [ db ]        
+    ports:
+      - "8080:80"
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: db
+    hostname: db
+    environment:
+      SA_PASSWORD: "parola"
+      ACCEPT_EULA: "Y"
+    restart: unless-stopped    
